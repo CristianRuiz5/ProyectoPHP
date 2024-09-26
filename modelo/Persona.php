@@ -1,10 +1,13 @@
 <?php
+// Definición de la clase base Persona, que contiene atributos comunes
 class Persona {
+    // Atributos privados de la clase Persona
     private $codigo;
     private $nombre;
     private $email;
     private $telefono;
 
+    // Constructor de la clase para inicializar los valores de los atributos
     public function __construct($codigo, $nombre, $email, $telefono) {
         $this->codigo = $codigo;
         $this->nombre = $nombre;
@@ -12,6 +15,7 @@ class Persona {
         $this->telefono = $telefono;
     }
 
+    // Métodos getter para obtener el valor de los atributos privados
     public function getCodigo() {
         return $this->codigo;
     }
@@ -28,6 +32,7 @@ class Persona {
         return $this->telefono;
     }
 
+    // Métodos setter para modificar el valor de los atributos privados
     public function setCodigo($codigo) {
         $this->codigo = $codigo;
     }
