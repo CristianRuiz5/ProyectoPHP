@@ -1,7 +1,7 @@
 <?php
-// Incluir el archivo de conexión a la base de datos y el modelo Empleado
-include_once '../modelo/Empleado.php';
-include_once '../config/database.php';
+// Incluir los archivos necesarios para el controlador
+include_once(__DIR__ . '/../modelo/Empleado.php');
+include_once(__DIR__ . '/../config/database.php');
 
 class EmpleadoController {
     private $db;
@@ -9,6 +9,7 @@ class EmpleadoController {
 
     // Constructor que establece la conexión con la base de datos
     public function __construct() {
+        // Crear instancia de la clase Database y obtener la conexión
         $database = new Database();
         $this->db = $database->getConnection();
     }
@@ -27,10 +28,13 @@ class EmpleadoController {
             $datos['codigo'],
             $datos['nombre'],
             $datos['email'],
-            $datos['telefono']
+            $datos['telefono'],
+            $datos['departamento'],
+            $datos['salario']
         );
 
-        $query = "INSERT INTO empleados (codigo, nombre, email, telefono) VALUES (:codigo, :nombre, :email, :telefono)";
+        $query = "INSERT INTO empleados (codigo, nombre, email, telefono, departamento, salario) 
+                  VALUES (:codigo, :nombre, :email, :telefono, :departamento, :salario)";
         $stmt = $this->db->prepare($query);
 
         // Asignar valores a los parámetros
@@ -38,6 +42,8 @@ class EmpleadoController {
         $stmt->bindParam(':nombre', $this->empleado->getNombre());
         $stmt->bindParam(':email', $this->empleado->getEmail());
         $stmt->bindParam(':telefono', $this->empleado->getTelefono());
+        $stmt->bindParam(':departamento', $this->empleado->getDepartamento());
+        $stmt->bindParam(':salario', $this->empleado->getSalario());
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
@@ -48,7 +54,9 @@ class EmpleadoController {
 
     // Método para actualizar un empleado existente
     public function actualizarEmpleado($datos) {
-        $query = "UPDATE empleados SET nombre = :nombre, email = :email, telefono = :telefono WHERE codigo = :codigo";
+        $query = "UPDATE empleados 
+                  SET nombre = :nombre, email = :email, telefono = :telefono, departamento = :departamento, salario = :salario 
+                  WHERE codigo = :codigo";
         $stmt = $this->db->prepare($query);
 
         // Asignar valores a los parámetros
@@ -56,6 +64,8 @@ class EmpleadoController {
         $stmt->bindParam(':nombre', $datos['nombre']);
         $stmt->bindParam(':email', $datos['email']);
         $stmt->bindParam(':telefono', $datos['telefono']);
+        $stmt->bindParam(':departamento', $datos['departamento']);
+        $stmt->bindParam(':salario', $datos['salario']);
 
         // Ejecutar la consulta
         if ($stmt->execute()) {
