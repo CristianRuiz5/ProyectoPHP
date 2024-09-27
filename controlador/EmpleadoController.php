@@ -1,7 +1,7 @@
 <?php
-// Incluir los archivos necesarios para el controlador
-include_once(__DIR__ . '/../modelo/Empleado.php');
-include_once(__DIR__ . '/../modelo/database.php');
+// Incluir el archivo del modelo Empleado y la conexión a la base de datos
+include_once(__DIR__ . '/../modelo/Empleado.php');  
+include_once(__DIR__ . '/../modelo/database.php');  
 
 class EmpleadoController {
     private $db;
@@ -11,7 +11,6 @@ class EmpleadoController {
         // Crear instancia de la clase Database y obtener la conexión
         $database = new Database();
         $this->db = $database->getConnection();
-        $this->empleado = new Empleado($this->db);
     }
 
     // Método para listar todos los empleados
@@ -37,3 +36,4 @@ class EmpleadoController {
     // Otros métodos como actualizarEmpleado, eliminarEmpleado...
 }
 ?>
+
