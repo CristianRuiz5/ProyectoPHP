@@ -38,6 +38,7 @@ $empleados = $controller->listarEmpleados();
                 </tr>
             </thead>
             <tbody>
+                <!-- Recorrer el array de empleados y mostrar los datos en la tabla -->
                 <?php foreach ($empleados as $empleado): ?>
                 <tr>
                     <td><?php echo $empleado['codigo']; ?></td>

@@ -2,7 +2,7 @@
 // Clase Database que maneja la conexión a la base de datos
 class Database {
     private $host = "localhost";
-    private $db_name = "mi_base_de_datos";  // Cambia esto al nombre de tu base de datos
+    private $db_name = "base de datos proyectophp";  
     private $username = "root";  // Usuario predeterminado de MySQL en XAMPP
     private $password = "";  // Contraseña predeterminada de XAMPP es vacía
     public $conn;

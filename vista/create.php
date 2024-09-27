@@ -2,14 +2,12 @@
 // Incluir el controlador del empleado
 include_once '../controlador/EmpleadoController.php';
 
-// Crear una instancia del controlador
 $controller = new EmpleadoController();
 
 // Verificar si el formulario ha sido enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recoger los datos del formulario
     $datos = [
-        'codigo' => null,  // Se genera automáticamente
         'nombre' => $_POST['nombre'],
         'email' => $_POST['email'],
         'telefono' => $_POST['telefono'],

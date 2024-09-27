@@ -5,12 +5,12 @@ include_once '../controlador/EmpleadoController.php';
 // Crear una instancia del controlador
 $controller = new EmpleadoController();
 
-// Verificar si hay un ID en la URL para editar
+// Verificar si hay un código de empleado en la URL para editar
 if (isset($_GET['codigo'])) {
-    // Obtener los datos del empleado a editar
+    // Obtener los datos del empleado para precargar el formulario
     $empleado = $controller->obtenerEmpleado($_GET['codigo']);
 } else {
-    // Redirigir si no se proporciona un ID
+    // Redirigir al listado si no se proporciona un código
     header("Location: index.php");
     exit();
 }
